@@ -26,5 +26,10 @@ class QrCode(models.Model):
 
 class QrStats(models.Model):
     ip = models.CharField(max_length=16, unique=False)
-    browser = models.CharField(null=True, unique=False, default=None, max_length=64)
+    browser = models.CharField(
+        null=True,
+        unique=False,
+        default=None,
+        max_length=64,
+    )
     qr_code = models.ForeignKey('QrCode', null=False, on_delete=models.CASCADE)
