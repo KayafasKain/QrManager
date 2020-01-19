@@ -17,8 +17,16 @@ class QrCode(models.Model):
         choices=CodeType,
         max_length=100,
     )
-    background_color = models.CharField(unique=False, max_length=16)
-    foreground_color = models.CharField(unique=False, max_length=16)
+    background_color = models.CharField(
+        unique=False,
+        default="#ffffff",
+        max_length=16,
+    )
+    foreground_color = models.CharField(
+        unique=False,
+        default="#000000",
+        max_length=16,
+    )
 
     class Meta:
         ordering = ['updated_at']
