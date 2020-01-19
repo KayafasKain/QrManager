@@ -52,9 +52,10 @@ class QrCodeScanViewSet(GenericViewSet):
             stats.save()
 
     def get_stats(self):
+        qr_scans = QrStats.objects.filter(qr_code=self.get_object()).all()
         return (
-            QrStats.objects.filter(qr_code=self.get_object()).all().count(),
-            QrStats.objects.values('ip', 'browser').distinct().count(),
+            len(qr_scans),
+            len({(scan.ip, scan.browser) for scan in qr_scans}),
         )
 
 
